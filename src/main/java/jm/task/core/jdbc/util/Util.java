@@ -22,18 +22,14 @@ public class Util {
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
-            try {
-                Configuration config = new Configuration();
-                config.setProperty("hibernate.connection.driver_class", JDBC_DRIVER);
-                config.setProperty("hibernate.connection.url", DATABASE_URL);
-                config.setProperty("hibernate.connection.username", USER);
-                config.setProperty("hibernate.connection.password", PASSWORD);
-                config.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-                config.addAnnotatedClass(User.class);
-                sessionFactory = config.buildSessionFactory();
-            } catch (Exception e) {
-                System.out.println("Failed to establish connection to the database;");
-            }
+            Configuration config = new Configuration();
+            config.setProperty("hibernate.connection.driver_class", JDBC_DRIVER);
+            config.setProperty("hibernate.connection.url", DATABASE_URL);
+            config.setProperty("hibernate.connection.username", USER);
+            config.setProperty("hibernate.connection.password", PASSWORD);
+            config.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+            config.addAnnotatedClass(User.class);
+            sessionFactory = config.buildSessionFactory();
         }
         return sessionFactory;
     }
