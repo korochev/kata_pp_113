@@ -78,7 +78,7 @@ public class UserDaoHibernateImpl implements UserDao {
         }
     }
 
-    private <T> void inTransaction(Consumer<Session> cons) {
+    private void inTransaction(Consumer<Session> cons) {
         inTransaction(session -> {
             cons.accept(session);
             return null;
