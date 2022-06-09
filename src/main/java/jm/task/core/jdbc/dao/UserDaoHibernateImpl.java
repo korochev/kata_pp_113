@@ -17,15 +17,13 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void createUsersTable() {
-        Consumer <Session> res = s -> {
-            String SQL = "CREATE TABLE IF NOT EXISTS pp_11_users " +
-                    "(id INTEGER AUTO_INCREMENT, " +
-                    " firstname VARCHAR(50) NOT NULL, " +
-                    " lastname VARCHAR (50) NOT NULL, " +
-                    " age INTEGER NOT NULL, " +
-                    " PRIMARY KEY (id))";
-            s.createSQLQuery(SQL).executeUpdate();
-        };
+        String SQL = "CREATE TABLE IF NOT EXISTS pp_11_users " +
+                "(id INTEGER AUTO_INCREMENT, " +
+                " firstname VARCHAR(50) NOT NULL, " +
+                " lastname VARCHAR (50) NOT NULL, " +
+                " age INTEGER NOT NULL, " +
+                " PRIMARY KEY (id))";
+        Consumer <Session> res = s -> s.createSQLQuery(SQL).executeUpdate();
         inTransaction(res);
         System.out.println("Table successfully created...");
     }
